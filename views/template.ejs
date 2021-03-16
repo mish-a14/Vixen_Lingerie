@@ -1,0 +1,22 @@
+<%- include('partials/header.ejs') %>
+
+    <h1> this is the BRAS, LINGERIE, PANTIES page honayy</h1>
+
+
+    <% for (let r of results) { %>
+    <br>
+        <% for (let p of r.picturesUrls) { %>
+            <img src="<%= p %>">
+        <% } %> <br>
+        <%= r.title %><br>
+        id:<%= r.id %><br>
+        $<%= r.price %><br>
+        size:<%= r.size %><br>
+        color:<%= r.color %><br>
+        description:<%= r.description %><br>
+        <button id='addBag'>Add to Bag</button><br>
+  <% } %>
+  
+     
+
+<%- include('partials/footer.ejs') %>

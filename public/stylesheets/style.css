@@ -1,0 +1,149 @@
+body {
+  padding: 0px;
+  padding-top: 0;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+a {
+  color: #00B7FF;
+}
+#logo {
+  position: relative; 
+  width: 200px;
+  height: 200px; 
+}
+
+#container {
+  top: 0; 
+  position: relative; 
+  background-color: maroon;
+}
+
+#vixen {
+  top: 0; 
+  position: relative; 
+  padding-top: 0px; 
+  font-size: 55px;
+  text-align: center;
+  color: black;
+  font-family: 'El Messiri', sans-serif;
+  text-decoration: none; 
+}
+
+#lingerie {
+  top: 0;
+  padding: 0px; 
+  padding-top: 10px;
+  font-size: 25px;
+  text-align: center;
+  color: black;
+  font-family: 'El Messiri', sans-serif;
+  font-weight: bold;
+  transition: all 0.5s;
+  border: none;
+}
+
+.container-1{
+  width: 200px;
+  vertical-align: middle;
+  white-space: nowrap;
+  float: right; 
+}
+
+
+#index {
+  display: flex;
+  width: 50%;
+  margin: auto;
+  transition: all 0.5s;
+  min-height: 100px;
+  margin-left: auto; 
+  margin-right: auto;
+}
+#index-wrapper {
+  height: 0;
+  overflow: hidden;
+  transition: height 0.66s ease-out;
+}
+#index-wrapper.loaded{
+  height: 100px;
+}
+.index {
+  min-height: 300px;
+  max-height: auto;
+}
+.index-thumbnail {
+  max-width: 100%;
+  height: auto;
+}
+
+
+#navigation {
+  text-align: center;
+  font-family: 'El Messiri', sans-serif;
+  font-weight: bold;
+  transition: all 0.5s;
+  border: none;
+}
+#navigation a:hover {
+  background-color: rgb(7, 7, 7);
+  color: white; 
+  font-weight: bold;
+  border: none;
+}
+#navigation a:active {
+  background-color: black;
+  color: white; 
+  font-weight: bold;
+  transition: all 0.5s;
+  border: none;
+}
+#navigation a {
+  float: center;
+  color: rgb(194, 109, 109);
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+  font-weight: bold;
+  transition: all 0.5s;
+  border: none;
+}
+
+#header1 {
+  background-color: rgb(122, 0, 0);
+  margin: 0px;
+  margin-top: 0px;
+  padding: 0px;
+  height: 5em; 
+}
+#header2 {
+  background-color: rgb(138, 52, 52);
+  height: 8em; 
+}
+
+#footer {
+  display: flex; 
+  flex-wrap: wrap; 
+  flex-direction: column;
+  background: transparent; 
+  text-align: center;
+  background-color: rgb(122, 0, 0); 
+  font-family: 'El Messiri', sans-serif;
+  font-weight: bold;
+  border: none;
+  font-weight: bold;
+  transition: all 0.5s;
+  border: none;
+  position: absolute;
+  bottom: 0;
+  width: 100%; 
+  height: 2.5rem;  
+}
+#footer a{ 
+  color:rgb(194, 109, 109);
+  text-decoration-line: none; 
+}
+#footer a:hover {
+  cursor: pointer; 
+  text-decoration: underline; 
+}
