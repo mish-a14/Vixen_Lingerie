@@ -22,15 +22,7 @@ let productSchema = new Schema ({
 });
 
 
-let userSchema = new Schema  ({
-    firstName: String, 
-    lastName: String, 
-    email: String, 
-    bag: [Schema.Types.ObjectId],
-    googleId: String
-}, {
-  timestamps: true
-});
+
 
 //USER SCHEMA 
     // reference SHOPPING CART SCHEMA 

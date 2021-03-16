@@ -7,19 +7,20 @@ router.get('/auth/google', passport.authenticate(
   'google',
   { scope: ['profile', 'email'] }
 ));
+
 // Google OAuth callback route
 router.get('/oauth2callback', passport.authenticate(
   'google',
   {
-    successRedirect : '/students',
-    failureRedirect : '/students'
+    successRedirect : '/',
+    failureRedirect : '/'
   }
 ));
 
 // OAuth logout route
 router.get('/logout', function(req, res){
   req.logout();
-  res.redirect('/students');
+  res.redirect('/');
 });
 
 
@@ -38,7 +39,9 @@ let productModels = require('../models/productModels.js')
 
 
 router.get('/', function(req, res, next) {
-  res.render('index.ejs');
+  console.log(req.user)
+  console.log('index page')
+  res.render('index.ejs', {user: req.user});
 });
 
 
