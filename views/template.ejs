@@ -8,7 +8,8 @@
         <% for (let p of r.picturesUrls) { %>
             <img src="<%= p %>">
         <% } %> <br>
-        <a href='http://localhost:3000/<%= r.title %>'><%= r.title %><br></a>
+        <a href='http://localhost:3000/products/<%= r.id %>'><%= r.title %><br></a>
+      
         id:<%= r.id %><br>
         $<%= r.price %><br>
         color:<%= r.color %><br>

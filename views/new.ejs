@@ -2,11 +2,11 @@
 
     <h1> this is the new page honayy</h1>
 
-        <form method="POST" action='/submit'>
-        <input type='text' name='new' autocomplete='off'>
-        <button type='submit'>Submit</button>
-        </form>
-
+<form method="POST" action='/submit'>
+    rating: <input type='number' name='rating' min='1' max='5'><br>
+    comment: <input type='text' name='new' autocomplete='off'><br>
+    <button type='submit'>Submit Review</button>
+     </form>
         
 <%- include('partials/footer.ejs') %>
 

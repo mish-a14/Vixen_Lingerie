@@ -3,12 +3,16 @@ const Schema = mongoose.Schema;
 
 
 let reviewSchema = new Schema({
+    picturesUrl: String, 
     comment: String,
+    
     rating: {
         type: Number, min: 1, max: 5, default: 5}
     }, {
     timestamps: true
     });
+
+
 
 let productSchema = new Schema ({
     picturesUrls: [String], 

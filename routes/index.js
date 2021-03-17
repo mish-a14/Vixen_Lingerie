@@ -59,17 +59,6 @@ router.get('/bras', async function(req, res) {
   res.render('template.ejs', {results: bras})
 }); 
 
-router.get('/bras/:id', function(req, res) {
-  console.log(req.params.id)
-  for (let b of bras) {
-    if (req.params.id === b.id) {
-      res.render('showb.ejs', {b: b}) 
-    }
-  }
-  res.send('The page you are trying to reach is not available')
-});
-
-
 
 
 router.get('/panties', async function(req, res) {
@@ -77,16 +66,6 @@ router.get('/panties', async function(req, res) {
   console.log(panties)
   res.render('template.ejs', {results: panties})
 }); 
-
-router.get('/panties/:id', function(req, res) {
-  console.log(req.params.id)
-  for (let p of panties) {
-    if (req.params.id === p.id) {
-      res.render('showp.ejs', {p:p})
-    }
-  }
-  res.send('The page you are trying to reach is not available')
-});
 
 
 
@@ -97,16 +76,16 @@ router.get('/lingerie', async function(req, res) {
   res.render('template.ejs', {results: lingerie})
 }); 
 
-
-router.get('/lingerie/:id', function(req, res) {
-  console.log(req.params.id) 
-    for (let l of lingerie) {
-      if (req.params.id === l.id) {
-        res.render('showl.ejs', {l:l})
-      }
-    }
-  res.send('The page you are trying to reach is not available')
+router.get('/products/:id', async function(req, res) {
+  console.log('HELLLOOOOOOOOO')
+  console.log(req.params.id)
+  let product = await productModels.findById(req.params.id)
+  console.log(product)
+  res.render('productTemplate.ejs', {product: product})
 });
+
+
+
 
 
 
@@ -130,22 +109,41 @@ router.get('/form', function(req, res) {
 
 router.post('/submit', productCtrl.review) 
 
+//handler to handle post request. 
+router.post('/product/:id/submit', async function(req, res) {
+  console.log('HEYO HELLO HEY O LALALALLALAALLA')
+  console.log(req.body)
+  console.log(req.params.id)
+  let productDocument = await productModels.findOne({_id: req.params.id})
+  console.log(productDocument)
+  let reviewObj = {
+    picturesUrl: req.body.pictures,
+    comment: req.body.comment, 
+    rating: req.body.rating, 
+  }
+  productDocument.reviews.push(reviewObj)
+  await productDocument.save()
+  res.send('thanks hottie ;), we got your review')
+});
+
 
 
 
 router.get('/addStuff', async function(req, res) {
   await productModels.create ({
-    picturesUrls: ['/images/IMG_8686.jpg'],
-    title: 'Red Panty', 
-    category: 'panties',
+    picturesUrls: ['/images/IMG_8678.jpg'],
+    title: 'brown Panty', 
+    category: 'bras',
     price: 80,
     size: 'small',
-    color: 'red', 
-    description: 'red panty set'
+    color: 'brown', 
+    description: 'brown panty set'
   })
   console.log('addStuff')
   res.render('new.ejs')
 });
+
+
 
 
 
