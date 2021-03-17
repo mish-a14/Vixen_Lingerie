@@ -59,11 +59,37 @@ router.get('/bras', async function(req, res) {
   res.render('template.ejs', {results: bras})
 }); 
 
+router.get('/bras/:id', function(req, res) {
+  console.log(req.params.id)
+  for (let b of bras) {
+    if (req.params.id === b.id) {
+      res.render('showb.ejs', {b: b}) 
+    }
+  }
+  res.send('The page you are trying to reach is not available')
+});
+
+
+
+
 router.get('/panties', async function(req, res) {
   let panties = await productModels.find({category: "panties"})
   console.log(panties)
   res.render('template.ejs', {results: panties})
 }); 
+
+router.get('/panties/:id', function(req, res) {
+  console.log(req.params.id)
+  for (let p of panties) {
+    if (req.params.id === p.id) {
+      res.render('showp.ejs', {p:p})
+    }
+  }
+  res.send('The page you are trying to reach is not available')
+});
+
+
+
 
 router.get('/lingerie', async function(req, res) {
   let lingerie = await productModels.find({category: "lingerie"})
@@ -71,6 +97,16 @@ router.get('/lingerie', async function(req, res) {
   res.render('template.ejs', {results: lingerie})
 }); 
 
+
+router.get('/lingerie/:id', function(req, res) {
+  console.log(req.params.id) 
+    for (let l of lingerie) {
+      if (req.params.id === l.id) {
+        res.render('showl.ejs', {l:l})
+      }
+    }
+  res.send('The page you are trying to reach is not available')
+});
 
 
 
