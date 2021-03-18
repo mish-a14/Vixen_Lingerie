@@ -57,10 +57,6 @@ app.use(function(err, req, res, next) {
 });
 
 
-// var reviewRouter = require('./routes/reviews'); 
-// app.use('/product', reviewsRouter);
-
-
 
 
 module.exports = app;

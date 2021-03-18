@@ -2,6 +2,16 @@ body {
   padding: 0px;
   padding-top: 0;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  height: 100%;
+  margin: 0;
+}
+.wrapper {
+  min-height: 100%; 
+  margin-bottom: -50px; 
+}
+.footer, 
+.push {
+  height: 50px; 
 }
 a {
   color: #00B7FF;
@@ -9,7 +19,7 @@ a {
 #logo {
   position: relative; 
   width: 100%;
-  height: 300px; 
+  height: 350px; 
   top: 0px;
 }
 
@@ -49,7 +59,6 @@ a {
   white-space: nowrap;
   float: right; 
 }
-
 
 #index {
   display: flex;
@@ -133,12 +142,9 @@ a {
   font-weight: bold;
   border: none;
   font-weight: bold;
-  transition: all 0.5s;
-  border: none;
-  position: absolute;
-  bottom: 0;
-  width: 100%; 
-  height: 2.5rem;  
+  transition: all 0.5s;  
+  height: 2.5rem;
+  padding-top: 20px; 
 }
 #footer a{ 
   color:rgb(194, 109, 109);

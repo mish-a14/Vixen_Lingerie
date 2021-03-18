@@ -1,20 +1,20 @@
 <%- include('partials/header.ejs') %>
 
-    <h1> this is the BRAS, LINGERIE, PANTIES page honayy</h1>
 
-
-    <% for (let r of results) { %>
-    <br>
-        <% for (let p of r.picturesUrls) { %>
-            <img src="<%= p %>">
-        <% } %> <br>
-        <a href='http://localhost:3000/products/<%= r.id %>'><%= r.title %><br></a>
+<% for (let r of results) { %>
+<br>
+    <% for (let p of r.picturesUrls) { %>
+        <img src="<%= p %>">
+    <% } %> <br>
+    <a href='http://localhost:3000/products/<%= r.id %>'><%= r.title %><br></a>
       
-        id:<%= r.id %><br>
-        $<%= r.price %><br>
-        color:<%= r.color %><br>
-        <button id='addBag'>Add to Bag</button><br>
-  <% } %>
+    id:<%= r.id %><br>
+    $<%= r.price %><br>
+    color:<%= r.color %><br>
+    <form method='POST' action='/mybag/<%= r.id %>' name='bag'>
+    <button type='submit' id='addBag'>Add to Bag</button><br>
+    </form>
+<% } %>
   
      
 

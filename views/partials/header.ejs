@@ -12,6 +12,7 @@
   </head>
 
   <body>
+    <div class='wrapper'>
    
 
 <!-- <a href="/"><img id="logo" src='/images/transparent_Logo.png'></a> -->
@@ -26,6 +27,10 @@
    <header id='header2'>
    <h2 id='lingerie'>Luxury Lingerie by Mishal </h2>
 
+   <div>
+    <button>bag</button>
+  </div>
+
    <div class="box">
     <div class="container-1">
         <a href='/search'><span class="icon"><i class="fa fa-search"></i></span>
@@ -34,6 +39,12 @@
     
   </div>
 
+  <% if (user) { %>
+    HELLO <%= user.name %>
+  <% } else { %>
+    hello Stranger,
+  <% } %>
+ 
 
    <div id='navigation'>
       <a href='/new'>NEW</a>
@@ -41,9 +52,14 @@
       <a href='/bras'>BRAS</a>
       <a href='/panties'>PANTIES</a>
       <a href='/lingerie'>LINGERIE</a>
-      <a href='/auth/google'>Login</a>
-      <a href='/logout'>Logout</a>
+
+      <% if (user) { %>
+        <a href='/logout'>Logout</a>
+        <% } else { %>
+        <a href='/auth/google'>Login</a>
+       <% } %>
       
+  
    </div>
   </div>
   
