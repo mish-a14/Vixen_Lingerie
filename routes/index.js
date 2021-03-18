@@ -144,6 +144,21 @@ router.get('/addStuff', async function(req, res) {
 });
 
 
+//EMAIL NEWSLETTER 
+
+router.get('/newsletterform', function(req, res) {
+  res.render('index.ejs')
+}); 
+
+router.post('/submission', function(req, res){
+  console.log('HELOLOLOLOLOL HEY HEYY YEYEYEYEKBLHDBLKBF:KFB:KFHB:KFJB:KJFB:FKJB:FKJBF:KJFB')
+  console.log(req.body)
+  res.send("thanks for signing up hottie!")
+}) 
+
+//MY BAG
+
+
 router.get('/mybag', function(req, res) {
   res.render('bag.ejs')
 });
@@ -151,20 +166,18 @@ router.get('/mybag', function(req, res) {
 
 router.post('/mybag/:id', async function(req, res) {
   console.log('HELLO')
-  console.log(req.params.id)
-  console.log(req.params)
-  console.log(req.user)
-  console.log(req.user.name)
-  console.log(req.user._id)
-  console.log(req.user.id)
+  console.log("product id", req.params.id)
+  console.log("username", req.user.name)
+  console.log("user id", req.user.id)
 
-//  userModel.findById(req.user.id, function (err, user) {
-//    user.bag.push(req.params.id)
-//  userModel.save(function(err) {
-// if (err) return res.redirect('/mybag'); 
-//   });
-//});
-  res.render('bag.ejs')
+  //look up user document and put the product id in thier bag... 
+
+  let userDocument = await userModel.findById(req.user.id)
+  console.log('Alex made me do all this')
+  console.log(userDocument)
+  userDocument.bag.push(req.params.id)
+  await userDocument.save()
+  res.send('hey!!!!!!')
 });
 
 
@@ -175,6 +188,7 @@ function show(req, res) {
     res.render('/mybag', {total: 'bag detail', product}); 
   });
 }
+
 
 
 module.exports = router;

@@ -11,7 +11,7 @@
     id:<%= r.id %><br>
     $<%= r.price %><br>
     color:<%= r.color %><br>
-    <form method='POST' action='/mybag/<%= r.id %>' name='bag'>
+    <form method='POST' action='/mybag/<%= r.id %>'>
     <button type='submit' id='addBag'>Add to Bag</button><br>
     </form>
 <% } %>
