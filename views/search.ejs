@@ -1,8 +1,23 @@
 <%- include('partials/header.ejs') %>
 
+<br>
+<br>
+<br>
 
-<% results %>
+<% for (let p of foundDocument.picturesUrls) { %>
+    <img src="<%= p %>">
+<% } %> <br>
 
+
+<%= foundDocument.title %><br>
+size: <%= foundDocument.size %><br>
+$ <%= foundDocument.price %><br>
+color: <%= foundDocument.color %><br>
+description: <%= foundDocument.description %><br>
+
+<form method='POST' action='/mybag/<%= foundDocument.id %>'>
+    <button type='submit' id='addBag'>Add to Bag</button><br>
+    </form>
    
 
 

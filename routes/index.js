@@ -37,21 +37,15 @@ router.get('/search', function(req, res) {
   res.render('index.ejs', {user: req.user})
 });
 
-router.post('/search', function(req, res) {
+router.post('/search', async function(req, res) {
   console.log(req.body.search)
-  let search = productModels.findOne({color: req.body.search}, function(err, docs) {
-    if (err) console.log(err);
-    });
-    console.log(search)
-    res.render('search.ejs', {results: search, user: req.user})
+  let foundDocument = await productModels.findOne({title: req.body.search}) 
+    console.log(foundDocument)
+    res.render('search.ejs', {foundDocument: foundDocument, user: req.user})
   }); 
 
 
   
-
-
-
-
 
 
 
