@@ -15,13 +15,18 @@
    
 
 
-
 <form method="POST" action='/product/<%= product.id %>/submit'>
     submit pictures: <input type='text' name='pictures'><br>
     rating: <input type='number' name='rating' min='1' max='5'><br>
     comment: <input type='text' name='comment' autocomplete='off'><br>
     <button type='submit' value='Add Review'>Submit Review</button>
 </form>
+
+<% for (let p of product.reviews) { %>
+    <%= p.pictures %><br>
+    Rating: <%= p.rating %><br>
+    Comment: <%= p.comment %><br>
+ <% } %> <br>
 
     
 <%- include('partials/footer.ejs') %>

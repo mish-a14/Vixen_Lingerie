@@ -2,20 +2,22 @@
 
 
 <% for (let r of results) { %>
+
+   
 <br>
     <% for (let p of r.picturesUrls) { %>
-        <img src="<%= p %>">
+        <img src="<%= p %>" class='image'>
     <% } %> <br>
+   
+     
     <a href='http://localhost:3000/products/<%= r.id %>'><%= r.title %><br></a>
-      
-    id:<%= r.id %><br>
     $<%= r.price %><br>
     color:<%= r.color %><br>
     <form method='POST' action='/mybag/<%= r.id %>'>
     <button type='submit' id='addBag'>Add to Bag</button><br>
     </form>
 <% } %>
-  
-     
+
 
 <%- include('partials/footer.ejs') %>
+  

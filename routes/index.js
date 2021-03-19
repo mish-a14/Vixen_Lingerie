@@ -28,9 +28,14 @@ router.get('/logout', function(req, res){
 let productCtrl = require('../controllers/productCtrl.js')
 let productModels = require('../models/productModels.js')
 let userModel = require('../models/userModel.js')
+let emailModel = require('../models/emailModel.js')
 /* GET home page. */
 
+//SEARCH
 
+// router.get('/search', function(req, res) {
+//   res.render('index.ejs')
+// });
 
 router.get('/', function(req, res, next) {
   console.log(req.user)
@@ -82,35 +87,31 @@ router.get('/products/:id', async function(req, res) {
   res.render('productTemplate.ejs', {product: product, user: req.user})
 });
 
-
-
-
-
+//FOOTER
 
 router.get('/about', function(req, res) {
-  res.render('about.ejs')
+  res.render('about.ejs', {user: req.user})
 });
 
 router.get('/FAQs', function(req, res) {
-  res.render('faqs.ejs')
+  res.render('faqs.ejs', {user: req.user})
 });
 
 router.get('/fitting', function(req, res) {
-  res.render('fitting.ejs')
+  res.render('fitting.ejs', {user: req.user})
 });
 
 
 
+//review
+
 router.get('/form', function(req, res) {
-  res.render('new.ejs')
+  res.render('new.ejs', {user: req.user})
 }); 
 
 router.post('/submit', productCtrl.review) 
 
 
-
-
-//handler to handle post request. 
 router.post('/product/:id/submit', async function(req, res) {
   console.log(req.body)
   console.log(req.params.id)
@@ -131,64 +132,79 @@ router.post('/product/:id/submit', async function(req, res) {
 
 router.get('/addStuff', async function(req, res) {
   await productModels.create ({
-    picturesUrls: ['/images/IMG_8678.jpg'],
-    title: 'brown Panty', 
-    category: 'bras',
-    price: 80,
+    picturesUrls: ['/images/IMG_8683.jpg'],
+    title: 'Vixen Lace Panty', 
+    category: 'panties',
+    price: 70,
     size: 'small',
-    color: 'brown', 
-    description: 'brown panty set'
+    color: 'gold', 
+    description: 'The Vixen panty comes in two colors to glam up any occasion. while supplies last'
   })
   console.log('addStuff')
-  res.render('new.ejs')
+  res.render('new.ejs', {user: req.user})
 });
 
 
 //EMAIL NEWSLETTER 
 
 router.get('/newsletterform', function(req, res) {
-  res.render('index.ejs')
+  res.render('index.ejs', {user: req.user})
 }); 
 
-router.post('/submission', function(req, res){
-  console.log('HELOLOLOLOLOL HEY HEYY YEYEYEYEKBLHDBLKBF:KFB:KFHB:KFJB:KJFB:FKJB:FKJBF:KJFB')
+router.post('/submission', async function(req, res){
   console.log(req.body)
+    await emailModel.create ({
+      email: req.body
+    })
   res.send("thanks for signing up hottie!")
-}) 
+});
+
+
+
 
 //MY BAG
 
 
-router.get('/mybag', function(req, res) {
-  res.render('bag.ejs')
+router.get('/mybag', async function(req, res) {
+  if (req.user) {
+    let userDocument = await userModel.findById(req.user.id)
+  await userDocument.execPopulate('bag')
+  console.log('bag', "sbdkjfbsdjbflsjdbf;sldjs.kjhflskgflsdkhfbclsdjhbcflsjdhfblsjhdbfcsljhdbcs.djhvclsjhdfcvlsdjhvcsjhcsd;hcjdsa.jhcsdljhfvyefigskuefvhksd")
+  console.log(userDocument)
+  res.render('bag.ejs', {user: req.user, userDocument: userDocument})
+  } else {
+    res.redirect('/auth/google')
+  }
 });
 
-
 router.post('/mybag/:id', async function(req, res) {
-  console.log('HELLO')
+  if (req.user) {
   console.log("product id", req.params.id)
   console.log("username", req.user.name)
   console.log("user id", req.user.id)
 
-  //look up user document and put the product id in thier bag... 
-
   let userDocument = await userModel.findById(req.user.id)
-  console.log('Alex made me do all this')
   console.log(userDocument)
   userDocument.bag.push(req.params.id)
   await userDocument.save()
-  res.send('hey!!!!!!')
+console.log("SJFJSDNFSLDFNLSKDNFLSKDNFLSKDNF'SLKNF'SLKNF'SLKNF'SLKFNS'LKFNSNF'LKSNDFLKNSLDKNFSLDNFSLKF'LFN'SLKNFS'LKF'LKSDF'LKSDFNS'DLKFN'WIOERHJ'ORJGN'DLJFNV SNDK'LFSJFNSILDKJVBNDS'LVLR;/M.DKS;LEFIJHLDKGVN,MSK;LHJFBCMNLA;JLEIHUKJFSDGVJHKBNKEIOWUFGYHDIUGKSEFBKJB,DC ,MC")
+  await userDocument.execPopulate('bag')
+  console.log('bag', "sbdkjfbsdjbflsjdbf;sldjs.kjhflskgflsdkhfbclsdjhbcflsjdhfblsjhdbfcsljhdbcs.djhvclsjhdfcvlsdjhvcsjhcsd;hcjdsa.jhcsdljhfvyefigskuefvhksd")
+  console.log(userDocument)
+  res.render('bag.ejs', {user: req.user, userDocument: userDocument})
+} else {
+  res.redirect('/auth/google')
+}
 });
 
-
-function show(req, res) {
-  product.findById(req.params.id)
-  .populate('bag').exec(function(err, product) {
-
-    res.render('/mybag', {total: 'bag detail', product}); 
-  });
-}
-
+// function show(req, res) {
+//   Movie.findById(req.params.id)
+//   .populate('cast').exec(function(err, movie){
+//     PerformanceResourceTiming.find(
+//     )
+//     res.render('/movies/show', {title: 'Movie Detail', movie})
+//   });
+// }
 
 
 module.exports = router;
