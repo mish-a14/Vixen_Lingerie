@@ -1,6 +1,8 @@
 <%- include('partials/header.ejs') %>
-
-
+<br> 
+<br> 
+<br> 
+<div class='products'>
 <% for (let r of results) { %>
 
    
@@ -8,7 +10,6 @@
     <% for (let p of r.picturesUrls) { %>
         <img src="<%= p %>" class='image'>
     <% } %> <br>
-   
      
     <a href='http://localhost:3000/products/<%= r.id %>'><%= r.title %><br></a>
     $<%= r.price %><br>
@@ -17,7 +18,7 @@
     <button type='submit' id='addBag'>Add to Bag</button><br>
     </form>
 <% } %>
-
+</div>
 
 <%- include('partials/footer.ejs') %>
   

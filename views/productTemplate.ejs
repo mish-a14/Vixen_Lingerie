@@ -1,6 +1,10 @@
 <%- include('partials/header.ejs') %>
 
+<br>
+<br>
+<br>
 
+<div class='products'>
     <% for (let p of product.picturesUrls) { %>
         <img src="<%= p %>">
     <% } %> <br>
@@ -13,7 +17,7 @@
     <button type='submit' id='addBag'>Add to Bag</button><br>
     </form>
    
-
+</div>
 
 <form method="POST" action='/product/<%= product.id %>/submit'>
     submit pictures: <input type='text' name='pictures'><br>
@@ -22,11 +26,14 @@
     <button type='submit' value='Add Review'>Submit Review</button>
 </form>
 
+
+
 <% for (let p of product.reviews) { %>
     <%= p.pictures %><br>
     Rating: <%= p.rating %><br>
     Comment: <%= p.comment %><br>
  <% } %> <br>
 
-    
+
+
 <%- include('partials/footer.ejs') %>

@@ -5,6 +5,13 @@ body {
   height: 100%;
   margin: 0;
 }
+h1 {
+  text-align: center; 
+  color: maroon;  
+  font-family: 'El Messiri', sans-serif;
+  font-weight: bold;
+  transition: all 0.5s;
+}
 .wrapper {
   min-height: 100%; 
   margin-bottom: -50px; 
@@ -19,7 +26,7 @@ a {
 #logo {
   position: relative; 
   width: 100%;
-  height: 350px; 
+  height: 300px; 
   top: 0px;
 }
 
@@ -60,15 +67,19 @@ a {
   float: right; 
 }
 
-#index {
-  display: flex;
-  width: 50%;
-  margin: auto;
-  transition: all 0.5s;
-  min-height: 100px;
-  margin-left: auto; 
-  margin-right: auto;
+
+.index {
+  display: flex; 
+  justify-content: center;
 }
+#index {
+  width: 30%;
+  height: auto; 
+  transition: all 0.8s;
+  padding-top: 80px;
+}
+
+
 #index-wrapper {
   height: 0;
   overflow: hidden;
@@ -109,15 +120,42 @@ a {
 }
 #navigation a {
   float: center;
-  color: rgb(194, 109, 109);
+  color: rgb(237, 168, 168);
+  text-shadow: -0.5px 0 black, 0 0.5px black, 0.5px 0 black, 0 -0.5px black;;
   text-align: center;
   padding: 14px 16px;
   text-decoration: none;
-  font-size: 17px;
+  font-size: 25px;
   font-weight: bold;
   transition: all 0.5s;
   border: none;
 }
+
+.bag a {
+  font-family: 'El Messiri', sans-serif;
+  font-weight: bold;
+  transition: all 0.5s;
+  float: right;
+  color: rgb(237, 168, 168);
+  text-shadow: -0.5px 0 black, 0 0.5px black, 0.5px 0 black, 0 -0.5px black;;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 15px;
+}
+
+#login {
+  font-family: 'El Messiri', sans-serif;
+  font-weight: bold;
+  float: right;
+  color: rgb(237, 168, 168);
+  text-shadow: -0.5px 0 black, 0 0.5px black, 0.5px 0 black, 0 -0.5px black;;
+  text-align: center;
+  text-decoration: none;
+  font-size: 20px;
+  transition: all 0.7s;
+}
+
 
 #header1 {
   background-color: rgb(122, 0, 0);
@@ -143,7 +181,7 @@ a {
   border: none;
   font-weight: bold;
   transition: all 0.5s;  
-  height: 2.5rem;
+ 
   padding-top: 20px; 
 }
 #footer a{ 
@@ -162,4 +200,12 @@ a {
 .container {
   top: 0; 
   position: relative; 
+}
+
+.products {
+  display: flex;
+  justify-content: center;
+ transition: all 0.7s;
+font-family: 'El Messiri', sans-serif;
+  font-weight: bold;
 }

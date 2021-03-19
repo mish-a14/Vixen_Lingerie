@@ -25,29 +25,33 @@
 
   
 
-   <header id='header2'>
+  <header id='header2'>
    
-
-    <div>
-     <a href='/mybag'>bag</a>
-    </div>
-
-
-   <div class="box">
-    <div class="container-1">
-      <a href='/search'><span class="icon"><i class="fa fa-search"></i></span>
-        <input type="search" id="search" placeholder="Search..." />
-    </div>
     
-  </div>   
+
+    <div class='bag'>
+     <a href='/mybag'>  <i class="fas fa-shopping-bag"></i> MY BAG</a>
+    </div>
 
 
-  <% if (user) { %>
-    HELLO <%= user.name %>
-  <% } else { %>
-    hello Stranger,
-  <% } %>
+
+
+  <form method='POST' class="example" action="/search">
+    <input type="text" placeholder="Search.." name="search">
+    <button type="submit"><i class="fa fa-search"></i></button>
+  </form>
   
+<% if (user) { %>
+      <p id='login'>HELLO <%= user.name %></p>
+    <% } else { %>
+      <p id='login'>Hello Stranger</p>
+    <% } %>
+    
+    <% if (user) { %>
+    <a href='/logout'>LOGOUT</a>
+    <% } else { %>
+    <a href='/auth/google'>LOGIN</a>
+     <% } %>
 
    <div id='navigation'>
       <a href='/new'>NEW</a>
@@ -57,13 +61,8 @@
       <a href='/lingerie'>LINGERIE</a>
       
       
-      <% if (user) { %>
-      <a href='/logout'>Logout</a>
-      <% } else { %>
-      <a href='/auth/google'>Login</a>
-     <% } %>
-      
-      
+     
+    
    </div>
   </div>
   

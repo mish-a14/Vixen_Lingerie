@@ -33,9 +33,27 @@ let emailModel = require('../models/emailModel.js')
 
 //SEARCH
 
-// router.get('/search', function(req, res) {
-//   res.render('index.ejs')
-// });
+router.get('/search', function(req, res) {
+  res.render('index.ejs', {user: req.user})
+});
+
+router.post('/search', function(req, res) {
+  console.log(req.body.search)
+  let search = productModels.findOne({color: req.body.search}, function(err, docs) {
+    if (err) console.log(err);
+    });
+    console.log(search)
+    res.render('search.ejs', {results: search, user: req.user})
+  }); 
+
+
+  
+
+
+
+
+
+
 
 router.get('/', function(req, res, next) {
   console.log(req.user)
@@ -169,7 +187,7 @@ router.get('/mybag', async function(req, res) {
   if (req.user) {
     let userDocument = await userModel.findById(req.user.id)
   await userDocument.execPopulate('bag')
-  console.log('bag', "sbdkjfbsdjbflsjdbf;sldjs.kjhflskgflsdkhfbclsdjhbcflsjdhfblsjhdbfcsljhdbcs.djhvclsjhdfcvlsdjhvcsjhcsd;hcjdsa.jhcsdljhfvyefigskuefvhksd")
+  console.log('bag')
   console.log(userDocument)
   res.render('bag.ejs', {user: req.user, userDocument: userDocument})
   } else {
@@ -187,9 +205,9 @@ router.post('/mybag/:id', async function(req, res) {
   console.log(userDocument)
   userDocument.bag.push(req.params.id)
   await userDocument.save()
-console.log("SJFJSDNFSLDFNLSKDNFLSKDNFLSKDNF'SLKNF'SLKNF'SLKNF'SLKFNS'LKFNSNF'LKSNDFLKNSLDKNFSLDNFSLKF'LFN'SLKNFS'LKF'LKSDF'LKSDFNS'DLKFN'WIOERHJ'ORJGN'DLJFNV SNDK'LFSJFNSILDKJVBNDS'LVLR;/M.DKS;LEFIJHLDKGVN,MSK;LHJFBCMNLA;JLEIHUKJFSDGVJHKBNKEIOWUFGYHDIUGKSEFBKJB,DC ,MC")
+
   await userDocument.execPopulate('bag')
-  console.log('bag', "sbdkjfbsdjbflsjdbf;sldjs.kjhflskgflsdkhfbclsdjhbcflsjdhfblsjhdbfcsljhdbcs.djhvclsjhdfcvlsdjhvcsjhcsd;hcjdsa.jhcsdljhfvyefigskuefvhksd")
+  console.log('bag')
   console.log(userDocument)
   res.render('bag.ejs', {user: req.user, userDocument: userDocument})
 } else {
