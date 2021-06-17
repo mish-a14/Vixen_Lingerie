@@ -92,7 +92,6 @@ router.get('/lingerie', async function(req, res) {
 }); 
 
 router.get('/products/:id', async function(req, res) {
-  console.log('HELLLOOOOOOOOO')
   console.log(req.params.id)
   let product = await productModels.findById(req.params.id)
   console.log(product)
