@@ -8,6 +8,7 @@
 <h2>Lingerie by Mishal</h2>
 
 <h3>Visit Vixen Lingerie</h3>
+https://vixenlingerie.herokuapp.com/
 
 Vxen Lingerie is my first project that boasts full CRUD functionality. 
 The idea stemmed from my desire to start my own lingerie company last year.
