@@ -14,8 +14,6 @@ Vxen Lingerie is my first project that boasts full CRUD functionality.
 The idea stemmed from my desire to start my own lingerie company last year.
 Therefore I decided that I would create an e-commerce website to sell lingerie so when I do decide to pursue my goal to start my lingerie company, I can use this website! 
 
-The Vixen Lingerie website has an O
-
 <p align="center">
 
 **Technologies used:** |    **Languages:**
